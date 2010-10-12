@@ -12,10 +12,25 @@
   <version>1.0-SNAPSHOT</version>
 
   <properties>
-	<jetty.version>6.1.25</jetty.version>
-	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<project.build.source>1.6</project.build.source>
-	<project.build.target>1.6</project.build.target>
+ 	  <jetty.version>6.1.25</jetty.version>
+ 	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ 	  <project.build.source>1.6</project.build.source>
+ 	  <project.build.target>1.6</project.build.target>
   </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jetty</artifactId>
+      <version>${jetty.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jsp-2.1-jetty</artifactId>
+      <version>${jetty.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
 </project>
