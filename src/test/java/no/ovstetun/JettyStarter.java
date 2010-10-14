@@ -15,7 +15,7 @@ public final class JettyStarter {
         Server server = new Server(8080);
 
         final WebAppContext context = new WebAppContext();
-        context.setContextPath("/rectag");
+        context.setContextPath("/recursivetag");
         context.setWar("src/main/webapp");
 
         server.addHandler(context);

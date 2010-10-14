@@ -1,0 +1,94 @@
+This project is to show that use of a recursive tag fails on Mac for Jetty.
+
+Start jetty using mvn jetty:run
+Navigate to http://localhost:8080/recursivetag
+
+This should show the following html:
+
+<ul>
+  <li>
+    first
+    <ul>
+      <li>
+        second
+      </li>
+    </ul>
+    <ul>
+      <li>
+        third
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+But it fails with the following stacktrace:
+
+java.io.FileNotFoundException: no such file: /var/folders/Ke/Kerk+0z7F3eKuWAdsRJQkk+++TI/-Tmp-/Jetty_0_0_0_0_8080_webapp__recursivetag__ossse0/jsp/org/apache/jsp/tag/web/rec/recnode_tagx.class
+	at org.apache.jasper.compiler.SmapUtil$SDEInstaller.<init>(SmapUtil.java:258)
+	at org.apache.jasper.compiler.SmapUtil$SDEInstaller.install(SmapUtil.java:230)
+	at org.apache.jasper.compiler.SmapUtil.installSmap(SmapUtil.java:158)
+	at org.apache.jasper.compiler.Compiler.generateClass(Compiler.java:390)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:437)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:608)
+	at org.apache.jasper.servlet.JspServletWrapper.loadTagFile(JspServletWrapper.java:261)
+	at org.apache.jasper.compiler.TagFileProcessor.loadTagFile(TagFileProcessor.java:683)
+	at org.apache.jasper.compiler.TagFileProcessor.access$000(TagFileProcessor.java:88)
+	at org.apache.jasper.compiler.TagFileProcessor$TagFileLoaderVisitor.visit(TagFileProcessor.java:739)
+	at org.apache.jasper.compiler.Node$CustomTag.accept(Node.java:1501)
+	at org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2291)
+	at org.apache.jasper.compiler.Node$Visitor.visitBody(Node.java:2341)
+	at org.apache.jasper.compiler.Node$Visitor.visit(Node.java:2452)
+	at org.apache.jasper.compiler.Node$UninterpretedTag.accept(Node.java:1235)
+	at org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2291)
+	at org.apache.jasper.compiler.Node$Visitor.visitBody(Node.java:2341)
+	at org.apache.jasper.compiler.Node$Visitor.visit(Node.java:2452)
+	at org.apache.jasper.compiler.Node$UninterpretedTag.accept(Node.java:1235)
+	at org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2291)
+	at org.apache.jasper.compiler.Node$Visitor.visitBody(Node.java:2341)
+	at org.apache.jasper.compiler.Node$Visitor.visit(Node.java:2452)
+	at org.apache.jasper.compiler.Node$UninterpretedTag.accept(Node.java:1235)
+	at org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2291)
+	at org.apache.jasper.compiler.Node$Visitor.visitBody(Node.java:2341)
+	at org.apache.jasper.compiler.Node$Visitor.visit(Node.java:2352)
+	at org.apache.jasper.compiler.Node$JspRoot.accept(Node.java:575)
+	at org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2291)
+	at org.apache.jasper.compiler.Node$Visitor.visitBody(Node.java:2341)
+	at org.apache.jasper.compiler.Node$Visitor.visit(Node.java:2347)
+	at org.apache.jasper.compiler.Node$Root.accept(Node.java:498)
+	at org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2291)
+	at org.apache.jasper.compiler.TagFileProcessor.loadTagFiles(TagFileProcessor.java:757)
+	at org.apache.jasper.compiler.Compiler.generateJava(Compiler.java:222)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:435)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:608)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:360)
+	at org.apache.jasper.servlet.JspServlet._serviceJspFile(JspServlet.java:486)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:380)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:390)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:765)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:440)
+	at org.mortbay.jetty.servlet.Dispatcher.forward(Dispatcher.java:327)
+	at org.mortbay.jetty.servlet.Dispatcher.forward(Dispatcher.java:126)
+	at org.mortbay.jetty.servlet.DefaultServlet.doGet(DefaultServlet.java:503)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:390)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:765)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:440)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:326)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:926)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+	at org.mortbay.jetty.bio.SocketConnector$Connection.run(SocketConnector.java:228)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
