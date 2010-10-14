@@ -1,6 +1,6 @@
 This project is to show that use of a recursive tag fails on Mac for Jetty.
 
-Start jetty using mvn jetty:run
+Start jetty using mvn jetty:run OR open in your favorite IDE and start the main-class in JettyStarter.java.
 Navigate to http://localhost:8080/recursivetag
 
 This should show the following html:
