@@ -5,11 +5,16 @@ import java.util.ArrayList;
 
 public class Node {
 	private String content;
-	private List<Node> children;
-	
+	private List<Node> children = new ArrayList<Node>();
+
+    public Node() {
+        content = "first";
+        children.add(new Node("second"));
+        children.add(new Node("third"));
+    }
+
 	public Node(String aContent) {
-	    content = aContent;
-	    children = new ArrayList<Node>();
+        content = aContent;
 	}
 
 	public String getContent() {
@@ -24,17 +29,5 @@ public class Node {
 	}
 	public void addChild(Node node) {
 	    children.add(node);
-	}
-	
-	public static Node createNodes() {
-	    Node n = new Node("first");
-	    
-	    Node n2 = new Node("second");
-	    n.addChild(n2);
-	    
-	    Node n3 = new Node("third");
-	    n.addChild(n3);
-	    
-	    return n;
 	}
 }

@@ -1,0 +1,21 @@
+<jsp:root
+        xmlns:jsp="http://java.sun.com/JSP/Page"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:rec="urn:jsptagdir:/WEB-INF/tags/rec"
+        version="2.1">
+  <jsp:directive.page import="no.ovstetun.Node"/>
+
+  <jsp:output doctype-system="about:legacy-compat"
+              doctype-root-element="html"
+              omit-xml-declaration="true"/>
+
+  <html>
+    <body>
+      <jsp:useBean id="node" class="no.ovstetun.Node"/>
+      <div style="clear: both;">
+        <rec:recnode node="${node}"/>
+      </div>
+    </body>
+  </html>
+</jsp:root>

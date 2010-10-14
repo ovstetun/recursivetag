@@ -1,0 +1,28 @@
+<jsp:root
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:jsp="http://java.sun.com/JSP/Page"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:rec="urn:jsptagdir:/WEB-INF/tags/rec"
+        version="2.0">
+
+  <jsp:directive.tag
+          pageEncoding="utf-8"
+          description="Recursive node print"/>
+
+  <jsp:directive.attribute
+          name="node"
+          description="Node to print"
+          required="true"
+          type="no.ovstetun.Node"
+          />
+
+  <ul>
+    <li>
+      <c:out value="${node.content}"/>
+      <c:forEach items="${node.children}" var="child">
+        <rec:recnode node="${child}"/>
+      </c:forEach>
+    </li>
+  </ul>
+
+</jsp:root>
